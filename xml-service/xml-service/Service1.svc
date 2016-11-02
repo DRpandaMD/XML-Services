@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="xml_service.XmlService" CodeBehind="Service1.svc.cs" %>

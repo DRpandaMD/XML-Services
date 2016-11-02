@@ -12,7 +12,11 @@ namespace xml_service
     [ServiceContract]
     public interface IXmlService
     {
+        [OperationContract]
+        string generateHtml(string xmlURL, string xslURL);
 
+        [OperationContract]
+        string validateXML(string xmlURL, string xsdURL);
     }
 
 }

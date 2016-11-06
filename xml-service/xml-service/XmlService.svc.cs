@@ -35,10 +35,17 @@ namespace xml_service
             {
                 return ex.Message;
             }
-
-            //now we need to get our schema to verify our XML vs our XSD 
             XmlSchemaSet schema = new XmlSchemaSet();
-            schema.Add(null, xsdURL);
+            //now we need to get our schema to verify our XML vs our XSD 
+            try
+            {
+                schema.Add(null, xsdURL);
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+           
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
             settings.Schemas = schema;
@@ -59,22 +66,32 @@ namespace xml_service
         //Try to do 5.2 Wep Operation "Transform"
         public string generateHtml(string xmlURL, string xslURL)
         {
-            // we are going to get the xml file and make an XML Document
-            WebRequest xmlRequest = WebRequest.Create(xmlURL);
-            Stream xmlStream = xmlRequest.GetResponse().GetResponseStream();
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(xmlStream);
+            try
+            {
+                // we are going to get the xml file and make an XML Document
+                WebRequest xmlRequest = WebRequest.Create(xmlURL);
+                Stream xmlStream = xmlRequest.GetResponse().GetResponseStream();
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(xmlStream);
 
-            //get the .xslt file from the url and load it to transform the document
-            XslCompiledTransform transform = new XslCompiledTransform();
-            transform.Load(xslURL);
+                //get the .xslt file from the url and load it to transform the document
+                XslCompiledTransform transform = new XslCompiledTransform();
+                transform.Load(xslURL);
 
-            //now make a Streamwrite to write the finished .hmtl file to disk
-            StreamWriter output = new StreamWriter(System.Web.HttpContext.Current.Server.MapPath("App_Data/transformed.html"));
-            transform.Transform(xmlDoc, null, output);
-            output.Close();
-            //put the file back
-            return File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath("App_Data/transformed.html"));
+                //now make a Streamwrite to write the finished .hmtl file to disk
+                StreamWriter output = new StreamWriter(System.Web.HttpContext.Current.Server.MapPath("App_Data/transformed.html"));
+                transform.Transform(xmlDoc, null, output);
+                output.Close();
+                //put the file back
+                return File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath("App_Data/transformed.html"));
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+           
+
+           
         }
 
         //we need to make a call back function to interrupt and show errors

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TryItWebPage.Default" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TryItWebPage._Default" %>
 
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
             <asp:TextBox ID="XSLTextBox" runat="server" Width="326px">http://www.public.asu.edu/~mczarate/Books.xslt</asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="PushMeButton" runat="server" Text="PushMe!" />
+            <asp:Button ID="PushMeButton" runat="server" Text="PushMe!" OnClick="PushMeButton_Click" />
             <asp:Label ID="ResultLabel" runat="server" Text=""></asp:Label>
             <br />
             <asp:Label ID="HtmlLabel" runat="server" Text=""></asp:Label>
@@ -44,7 +44,7 @@
             <asp:TextBox ID="XSDTextBox" runat="server" Width="326px">http://www.public.asu.edu/~mczarate/Books.xsd</asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="ValidateButton" runat="server" Text="ValidateXML" />
+            <asp:Button ID="ValidateButton" runat="server" Text="ValidateXML" OnClick="ValidateButton_Click" />
             <br />
             <asp:Label ID="ValidationResultLabel" runat="server" Text="" Font-Bold="true" Font-Size="Larger"></asp:Label>
 

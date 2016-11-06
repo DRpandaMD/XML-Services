@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xml-service", "xml-service\xml-service.csproj", "{9B211694-EB37-4CB4-86D6-1CF4DBCB1DC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryItWebPage", "TryItWebPage\TryItWebPage.csproj", "{286069A2-B618-40FD-8BE4-37EE1B9B48B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B211694-EB37-4CB4-86D6-1CF4DBCB1DC3} = {9B211694-EB37-4CB4-86D6-1CF4DBCB1DC3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
